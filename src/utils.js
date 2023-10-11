@@ -22,3 +22,17 @@ export function calculateDailyCalorieNeed(obj) {
       return basalMetabolicRate * 1.9 + calorieGoal;
   }
 }
+
+/**
+ *
+ * @param {object} obj
+ * @returns {boolean}
+ */
+export function hasEmptyValue(obj) {
+  for (const key in obj) {
+    if (obj[key] === "") {
+      return true;
+    }
+  }
+  return false;
+}

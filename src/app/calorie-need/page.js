@@ -2,14 +2,15 @@
 
 import Link from "next/link";
 import { useState, useRef } from "react";
-import { calculateDailyCalorieNeed } from "@/utils";
+import { calculateDailyCalorieNeed, hasEmptyValue } from "@/utils";
 import useAppStore from "@/store";
+import { useGetFromStore } from "@/hooks";
 
 function CalorieNeed() {
-  // Hooks
+  // HOOKS
   const calorieNeedModal = useRef(null);
 
-  // States
+  // STATES
   const [calorieNeedCalculationInfo, setCalorieNeedCalculationInfo] = useState({
     weight: "",
     height: "",
@@ -18,39 +19,27 @@ function CalorieNeed() {
     activityLevel: "",
     goal: "",
   });
-  const dailyCalorieNeed = useAppStore((state) => state.dailyCalorieNeed);
+  const dailyCalorieNeed = useGetFromStore(
+    useAppStore,
+    (state) => state.dailyCalorieNeed
+  );
   const setDailyCalorieNeed = useAppStore((state) => state.setDailyCalorieNeed);
-  const [isMissingValue, setIsMissingValue] = useState(false);
+  const setIsUserAuthorized = useAppStore((state) => state.setIsUserAuthorized);
+  // keeps track of missing input values to inform user that they are missing values
+  const [isEmptyValueDetected, setIsEmptyValueDetected] = useState(false);
 
-  // Functions
-  /**
-   *
-   * @param {object} obj
-   * @returns {boolean}
-   */
-  function checkForEmptyValues(obj) {
-    for (const key in obj) {
-      if (obj[key] === "") {
-        return true;
-      }
-    }
-    return false;
-  }
+  // FUNCTIONS
 
-  function handleCalorieNeedCalculation() {
-    if (!checkForEmptyValues(calorieNeedCalculationInfo)) {
-      const calculatedCalorieNeed = Math.floor(
-        calculateDailyCalorieNeed(calorieNeedCalculationInfo)
-      );
-      setDailyCalorieNeed(calculatedCalorieNeed);
-      setIsMissingValue(false);
+  function handleDailyCalorieNeedCalculation() {
+    if (!hasEmptyValue(calorieNeedCalculationInfo)) {
+      setIsEmptyValueDetected(false);
       calorieNeedModal?.current?.showModal();
-      localStorage.setItem(
-        "daily-calorie-need",
-        JSON.stringify(calculatedCalorieNeed)
+      setIsUserAuthorized(true);
+      setDailyCalorieNeed(
+        Math.floor(calculateDailyCalorieNeed(calorieNeedCalculationInfo))
       );
     } else {
-      setIsMissingValue(true);
+      setIsEmptyValueDetected(true);
     }
   }
 
@@ -58,15 +47,14 @@ function CalorieNeed() {
     <main>
       <p>Calorie Calculation Page</p>
 
-      {/* Error message if there is a missing value in the form submit */}
-      {isMissingValue && (
+      {/* Error message if there is a missing value on the form submit */}
+      {isEmptyValueDetected && (
         <p className="text-red-500">There is a missing value.</p>
       )}
 
       {/* Calorie need calculation form */}
       <form className="flex flex-col">
         <input
-          id="first-input"
           type="number"
           placeholder="weight"
           value={calorieNeedCalculationInfo.weight}
@@ -145,7 +133,7 @@ function CalorieNeed() {
           <option value="maintain">maintain</option>
           <option value="lose">lose</option>
         </select>
-        <button type="button" onClick={handleCalorieNeedCalculation}>
+        <button type="button" onClick={handleDailyCalorieNeedCalculation}>
           Calculate
         </button>
       </form>

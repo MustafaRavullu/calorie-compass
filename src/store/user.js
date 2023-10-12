@@ -1,11 +1,10 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-const useAppStore = create(
+const useUserStore = create(
   persist(
     (set) => ({
       isUserAuthorized: false,
-
       setIsUserAuthorized: (value) => set({ isUserAuthorized: value }),
       dailyCalorieNeed: 0,
       setDailyCalorieNeed: (value) => set({ dailyCalorieNeed: value }),
@@ -14,9 +13,9 @@ const useAppStore = create(
         set({ completedDailyCalorieNeed: value }),
     }),
     {
-      name: "app-store",
+      name: "user-store",
     }
   )
 );
 
-export default useAppStore;
+export default useUserStore;

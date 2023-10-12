@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import { useEffect } from "react";
-import useAppStore from "@/store";
+import useUserStore from "@/store/user";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
   // STATES
-  const isUserAuthorized = useAppStore((state) => state.isUserAuthorized);
+  const isUserAuthorized = useUserStore((state) => state.isUserAuthorized);
 
   // HOOKS
   const router = useRouter();

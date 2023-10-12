@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState, useRef } from "react";
 import { calculateDailyCalorieNeed, hasEmptyValue } from "@/utils";
-import useAppStore from "@/store";
+import useUserStore from "@/store/user";
 import { useGetFromStore } from "@/hooks";
 
 function CalorieNeed() {
@@ -20,11 +20,15 @@ function CalorieNeed() {
     goal: "",
   });
   const dailyCalorieNeed = useGetFromStore(
-    useAppStore,
+    useUserStore,
     (state) => state.dailyCalorieNeed
   );
-  const setDailyCalorieNeed = useAppStore((state) => state.setDailyCalorieNeed);
-  const setIsUserAuthorized = useAppStore((state) => state.setIsUserAuthorized);
+  const setDailyCalorieNeed = useUserStore(
+    (state) => state.setDailyCalorieNeed
+  );
+  const setIsUserAuthorized = useUserStore(
+    (state) => state.setIsUserAuthorized
+  );
   // keeps track of missing input values to inform user that they are missing values
   const [isEmptyValueDetected, setIsEmptyValueDetected] = useState(false);
 

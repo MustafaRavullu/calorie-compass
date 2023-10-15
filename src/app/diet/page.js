@@ -1,30 +1,32 @@
 "use client";
 
 import CalorieBar from "@/components/calorie-bar";
-import useUserStore from "@/store/user";
+import useAppStore from "@/store/app";
 import { useRouter } from "next/navigation";
 import DietList from "@/components/diet-list";
-import useDietStore from "@/store/diet";
 import Link from "next/link";
 import Notification from "@/components/notification";
 import { useGetFromStore, useNotification } from "@/hooks";
 
 function Diet() {
   // STATES
-  const setIsUserAuthorized = useUserStore(
-    (state) => state.setIsUserAuthorized
-  );
-  const setCompletedDailyCalorieNeed = useUserStore(
+  const setIsUserAuthorized = useAppStore((state) => state.setIsUserAuthorized);
+  const setCompletedDailyCalorieNeed = useAppStore(
     (state) => state.setCompletedDailyCalorieNeed
   );
-  const setDailyCalorieNeed = useUserStore(
-    (state) => state.setDailyCalorieNeed
-  );
+  const setDailyCalorieNeed = useAppStore((state) => state.setDailyCalorieNeed);
   const [showMessage, setShowMessage] = useNotification(3000);
   const successMessage = useGetFromStore(
-    useDietStore,
+    useAppStore,
     (state) => state.successMessage
   );
+  const errorMessage = useGetFromStore(
+    useAppStore,
+    (state) => state.errorMessage
+  );
+  const emptyDiet = useAppStore((state) => state.emptyDiet);
+  const setSuccessMessage = useAppStore((state) => state.setSuccessMessage);
+  const setErrorMessage = useAppStore((state) => state.setErrorMessage);
 
   // HOOKS
   const router = useRouter();
@@ -34,6 +36,9 @@ function Diet() {
     setIsUserAuthorized(false);
     setCompletedDailyCalorieNeed(0);
     setDailyCalorieNeed(0);
+    emptyDiet();
+    setErrorMessage("");
+    setSuccessMessage("");
     localStorage.clear();
     router.push("/");
   }
@@ -52,7 +57,7 @@ function Diet() {
       <Notification
         active={showMessage}
         successMessage={successMessage}
-        errorMessage=""
+        errorMessage={errorMessage}
       />
       <DietList setShowMessage={setShowMessage} />
     </main>

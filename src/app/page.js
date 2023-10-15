@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import { useEffect } from "react";
-import useUserStore from "@/store/user";
+import useAppStore from "@/store/app";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
   // STATES
-  const isUserAuthorized = useUserStore((state) => state.isUserAuthorized);
+  const isUserAuthorized = useAppStore((state) => state.isUserAuthorized);
 
   // HOOKS
   const router = useRouter();
@@ -15,7 +15,7 @@ export default function Home() {
     if (isUserAuthorized) {
       router.push("/diet");
     }
-  }, []);
+  }, [isUserAuthorized, router]);
   return (
     <main>
       <p>Landing Page</p>

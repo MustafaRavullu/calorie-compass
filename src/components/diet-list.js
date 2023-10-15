@@ -1,12 +1,21 @@
 "use client";
 
-import useDietStore from "@/store/diet";
+import useAppStore from "@/store/app";
 import { useGetFromStore } from "@/hooks";
+import { handleCalculationCompletedDailyCalorieNeed } from "@/utils";
 
 function DietList({ setShowMessage }) {
   // STATES
-  const diet = useGetFromStore(useDietStore, (state) => state.diet);
-  const removeFoodFromDiet = useDietStore((state) => state.removeFoodFromDiet);
+  const diet = useGetFromStore(useAppStore, (state) => state.diet);
+  const removeFoodFromDiet = useAppStore((state) => state.removeFoodFromDiet);
+  const markFoodAsEaten = useAppStore((state) => state.markFoodAsEaten);
+  const completedDailyCalorieNeed = useGetFromStore(
+    useAppStore,
+    (state) => state.completedDailyCalorieNeed
+  );
+  const setCompletedDailyCalorieNeed = useAppStore(
+    (state) => state.setCompletedDailyCalorieNeed
+  );
 
   return (
     <div>
@@ -27,6 +36,23 @@ function DietList({ setShowMessage }) {
               }}
             >
               Remove
+            </button>
+            <button
+              type="button"
+              className="bg-yellow-500 p-3"
+              onClick={() => {
+                markFoodAsEaten(item.id);
+                handleCalculationCompletedDailyCalorieNeed(
+                  completedDailyCalorieNeed,
+                  item.calories,
+                  setCompletedDailyCalorieNeed,
+                  item.id,
+                  diet
+                );
+                setShowMessage(true);
+              }}
+            >
+              Mark as eaten
             </button>
           </div>
         ))

@@ -36,3 +36,38 @@ export function hasEmptyValue(obj) {
   }
   return false;
 }
+
+/**
+ *
+ * @param {array} diet
+ * @returns {number}
+ */
+export function calculateAddedFoodCalories(diet) {
+  let totalAddedFoodCalories = 0;
+  for (let i = 0; i < diet.length; i++) {
+    totalAddedFoodCalories += diet[i].calories;
+  }
+  return totalAddedFoodCalories;
+}
+
+export function calculateCompletedDailyCalorieNeed(diet) {
+  let totalCompletedDailyCalorieNeed = 0;
+  for (let i = 0; i < diet.length; i++) {
+    if (diet[i].eaten === true) {
+      totalCompletedDailyCalorieNeed += diet[i].calories;
+    }
+  }
+  return totalCompletedDailyCalorieNeed;
+}
+
+export function handleCalculationCompletedDailyCalorieNeed(
+  current,
+  addedCalories,
+  func,
+  id,
+  array
+) {
+  if (array?.filter((item) => item.id === id)[0].eaten === true) return;
+  const prev = current;
+  func(prev + addedCalories);
+}

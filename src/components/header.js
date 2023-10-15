@@ -1,12 +1,12 @@
 "use client";
 
-import useUserStore from "@/store/user";
+import useAppStore from "@/store/app";
 import { useGetFromStore } from "@/hooks";
 
 function Header() {
   // STATES
   const isUserAuthorized = useGetFromStore(
-    useUserStore,
+    useAppStore,
     (state) => state.isUserAuthorized
   );
 

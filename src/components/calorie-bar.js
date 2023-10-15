@@ -1,19 +1,19 @@
 "use client";
 
-import useUserStore from "@/store/user";
+import useAppStore from "@/store/app";
 import { useGetFromStore } from "@/hooks";
 
 function CalorieBar() {
   //STATES
   const dailyCalorieNeed = useGetFromStore(
-    useUserStore,
+    useAppStore,
     (state) => state.dailyCalorieNeed
   );
   const completedDailyCalorieNeed = useGetFromStore(
-    useUserStore,
+    useAppStore,
     (state) => state.completedDailyCalorieNeed
   );
-  const setCompletedDailyCalorieNeed = useUserStore(
+  const setCompletedDailyCalorieNeed = useAppStore(
     (state) => state.setCompletedDailyCalorieNeed
   );
 

@@ -1,19 +1,29 @@
-function RecipeCard({ title, calories, id, addFunc, msgFunc }) {
+"use client";
+import Image from "next/image";
+import useAppStore from "@/store/app";
+
+function RecipeCard({ id, label, image, sourceUrl, calories }) {
+  const addFoodToDiet = useAppStore((state) => state.addFoodToDiet);
   return (
     <div className="flex flex-col">
-      <p>title: {title}</p>
+      <p>title: {label}</p>
       <p>calories: {calories}</p>
+      <Image src={image} alt={label} width={200} height={200} priority />
+      <a href={sourceUrl} target="_blank">
+        go to source
+      </a>
       <button
         type="button"
         className="bg-green-500 p-3"
         onClick={() => {
-          addFunc({
+          addFoodToDiet({
             id: id,
-            title: title,
+            title: label,
             calories: calories,
+            img: image,
+            source: sourceUrl,
             eaten: false,
           });
-          msgFunc(true);
         }}
       >
         Add food
@@ -23,23 +33,3 @@ function RecipeCard({ title, calories, id, addFunc, msgFunc }) {
 }
 
 export default RecipeCard;
-
-// <div className="flex flex-col">
-//   <p>title: hamburger</p>
-//   <p>calories: 500</p>
-//   <button
-//     type="button"
-//     className="bg-green-500 p-3"
-//     onClick={() => {
-//       addFoodToDiet({
-//         id: 1,
-//         title: "hamburger",
-//         calories: 500,
-//         eaten: false,
-//       });
-//       setShowMessage(true);
-//     }}
-//   >
-//     Add food
-//   </button>
-// </div>;

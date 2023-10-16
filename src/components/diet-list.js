@@ -3,6 +3,7 @@
 import useAppStore from "@/store/app";
 import { useGetFromStore } from "@/hooks";
 import { handleCalculationCompletedDailyCalorieNeed } from "@/utils";
+import Image from "next/image";
 
 function DietList({ setShowMessage }) {
   // STATES
@@ -24,8 +25,23 @@ function DietList({ setShowMessage }) {
       ) : (
         diet?.map((item) => (
           <div key={item.id} className="flex flex-col p-3">
+            <Image
+              src={item.img}
+              alt={item.label}
+              width={200}
+              height={200}
+              priority
+            />
+
             <p>title: {item.title}</p>
             <p>calories: {item.calories}</p>
+            <a
+              href={item.source}
+              target="_blank"
+              className="p-2 bg-black text-white"
+            >
+              go to source
+            </a>
 
             <button
               type="button"

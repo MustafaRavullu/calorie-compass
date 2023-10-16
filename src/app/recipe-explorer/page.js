@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Notification from "@/components/notification";
 import RecipeSearch from "@/components/recipe-search";
+import RecipeCard from "@/components/recipe-card";
+import { v4 as uuidv4 } from "uuid";
 
 async function getRecipes(url) {
   const response = await fetch(url, { cache: "no-store" });
@@ -8,7 +10,7 @@ async function getRecipes(url) {
 }
 
 async function RecipeExplorer({ searchParams }) {
-  const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${searchParams.q}&app_id=${process.env.EDAMAM_APP_ID}&app_key=${process.env.EDAMAM_APP_KEY}&random=true`;
+  const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${searchParams.q}&app_id=${process.env.EDAMAM_APP_ID}&app_key=${process.env.EDAMAM_APP_KEY}&random=true&field=label&field=image&field=url&field=calories&field=totalTime`;
   const recipes = await getRecipes(url);
   return (
     <div>
@@ -20,10 +22,25 @@ async function RecipeExplorer({ searchParams }) {
       <Notification />
       <RecipeSearch />
 
-      {searchParams.q !== undefined &&
-        recipes.hits.map((item) => (
-          <p key={item.recipe.label}>{item.recipe.label}</p>
-        ))}
+      <div>
+        {searchParams.q !== undefined ? (
+          recipes.hits.map((item) => {
+            let id = uuidv4();
+            return (
+              <RecipeCard
+                key={id}
+                id={id}
+                label={item.recipe.label}
+                image={item.recipe.image}
+                sourceUrl={item.recipe.url}
+                calories={item.recipe.calories}
+              />
+            );
+          })
+        ) : (
+          <p>Lets search recipes</p>
+        )}
+      </div>
     </div>
   );
 }

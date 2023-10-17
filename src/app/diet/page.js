@@ -34,8 +34,8 @@ function Diet() {
   // FUNCTIONS
   function handleReset() {
     setIsUserAuthorized(false);
-    setCompletedDailyCalorieNeed(0);
     setDailyCalorieNeed(0);
+    setCompletedDailyCalorieNeed(0);
     emptyDiet();
     setErrorMessage("");
     setSuccessMessage("");

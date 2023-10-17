@@ -1,6 +1,7 @@
 import {
-  calculateAddedFoodCalories,
-  handleCalculationCompletedDailyCalorieNeed,
+  isDuplicateItem,
+  isAlreadyMarkedAsEaten,
+  isSumExceedsDailyCalorieNeed,
 } from "@/utils";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
@@ -8,6 +9,7 @@ import { persist } from "zustand/middleware";
 const useAppStore = create(
   persist(
     (set) => ({
+      diet: [],
       isUserAuthorized: false,
       setIsUserAuthorized: (value) => set({ isUserAuthorized: value }),
       dailyCalorieNeed: 0,
@@ -19,65 +21,49 @@ const useAppStore = create(
       errorMessage: "",
       setSuccessMessage: (message) => set({ successMessage: message }),
       setErrorMessage: (message) => set({ errorMessage: message }),
-      diet: [],
       emptyDiet: () => set({ diet: [] }),
       addFoodToDiet: (food) =>
         set((state) => {
-          const isDuplicate = state.diet.some((item) => item.id === food.id);
-          let doesItExceedDailyCalorie =
-            calculateAddedFoodCalories(state.diet) + food.calories >
-            state.dailyCalorieNeed;
-          if (!isDuplicate && !doesItExceedDailyCalorie) {
-            state.setSuccessMessage("Item added successfully");
-            state.setErrorMessage("");
-            return {
-              diet: [...state.diet, food],
-            };
-          }
-          if (isDuplicate) {
-            state.setErrorMessage("Item already exists!");
-          } else if (doesItExceedDailyCalorie) {
-            state.setErrorMessage("It exceeds daily calorie need!");
-          }
-          state.setSuccessMessage("");
+          if (state.diet.length > 200) return { diet: state.diet };
+          if (isDuplicateItem(food.id, state.diet)) return { diet: state.diet };
+          return { diet: [...state.diet, food] };
+        }),
+      removeFoodFromDiet: (removedFood) =>
+        set((state) => {
           return {
-            diet: state.diet,
+            diet: state.diet.filter((item) => item.id !== removedFood.id),
           };
         }),
-      removeFoodFromDiet: (foodId) =>
+      markFoodAsEaten: (food) =>
         set((state) => {
-          state.setSuccessMessage("Item deleted successfully");
-          const removedItem = state.diet.filter((item) => item.id === foodId);
-          if (removedItem[0].eaten === true) {
-            handleCalculationCompletedDailyCalorieNeed(
-              state.completedDailyCalorieNeed,
-              -1 * removedItem[0].calories,
-              state.setCompletedDailyCalorieNeed
-            );
-          }
-          return {
-            diet: state.diet.filter((item) => item.id !== foodId),
-          };
-        }),
-      markFoodAsEaten: (foodId) =>
-        set((state) => {
+          if (isAlreadyMarkedAsEaten(food)) return { diet: state.diet };
           if (
-            state.diet.filter((item) => item.id === foodId)[0].eaten === true
+            isSumExceedsDailyCalorieNeed(
+              food,
+              state.diet,
+              state.dailyCalorieNeed
+            )
           ) {
-            state.setSuccessMessage("");
-            state.setErrorMessage("It is already marked as eaten");
             return { diet: state.diet };
           }
-          state.setSuccessMessage("Marked as eaten");
-          state.setErrorMessage("");
           return {
             diet: state.diet.map((item) => {
-              if (item.id === foodId) {
+              if (item.id === food.id) {
                 return { ...item, eaten: true };
               }
               return item;
             }),
           };
+        }),
+      calculateCompletedDailyCalorieNeed: () =>
+        set((state) => {
+          let sum = 0;
+          state.diet.forEach((element) => {
+            if (element.eaten === true) {
+              sum += element.calories;
+            }
+          });
+          return { completedDailyCalorieNeed: sum };
         }),
     }),
     {

@@ -37,37 +37,20 @@ export function hasEmptyValue(obj) {
   return false;
 }
 
-/**
- *
- * @param {array} diet
- * @returns {number}
- */
-export function calculateAddedFoodCalories(diet) {
-  let totalAddedFoodCalories = 0;
-  for (let i = 0; i < diet.length; i++) {
-    totalAddedFoodCalories += diet[i].calories;
-  }
-  return totalAddedFoodCalories;
+export function isDuplicateItem(id, array) {
+  return array.some((item) => item.id === id);
 }
 
-export function calculateCompletedDailyCalorieNeed(diet) {
-  let totalCompletedDailyCalorieNeed = 0;
-  for (let i = 0; i < diet.length; i++) {
-    if (diet[i].eaten === true) {
-      totalCompletedDailyCalorieNeed += diet[i].calories;
+export function isAlreadyMarkedAsEaten(item) {
+  return item.eaten === true;
+}
+
+export function isSumExceedsDailyCalorieNeed(item, array, threshold) {
+  let prevSum = 0;
+  for (let i = 0; i < array?.length; i++) {
+    if (array[i].eaten === true) {
+      prevSum += array[i].calories;
     }
   }
-  return totalCompletedDailyCalorieNeed;
-}
-
-export function handleCalculationCompletedDailyCalorieNeed(
-  current,
-  addedCalories,
-  func,
-  id,
-  array
-) {
-  if (array?.filter((item) => item.id === id)[0].eaten === true) return;
-  const prev = current;
-  func(prev + addedCalories);
+  return prevSum + item.calories > threshold;
 }

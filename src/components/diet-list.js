@@ -2,7 +2,6 @@
 
 import useAppStore from "@/store/app";
 import { useGetFromStore } from "@/hooks";
-import { handleCalculationCompletedDailyCalorieNeed } from "@/utils";
 import Image from "next/image";
 
 function DietList({ setShowMessage }) {
@@ -10,12 +9,8 @@ function DietList({ setShowMessage }) {
   const diet = useGetFromStore(useAppStore, (state) => state.diet);
   const removeFoodFromDiet = useAppStore((state) => state.removeFoodFromDiet);
   const markFoodAsEaten = useAppStore((state) => state.markFoodAsEaten);
-  const completedDailyCalorieNeed = useGetFromStore(
-    useAppStore,
-    (state) => state.completedDailyCalorieNeed
-  );
-  const setCompletedDailyCalorieNeed = useAppStore(
-    (state) => state.setCompletedDailyCalorieNeed
+  const calculateCompletedDailyCalorieNeed = useAppStore(
+    (state) => state.calculateCompletedDailyCalorieNeed
   );
 
   return (
@@ -24,10 +19,13 @@ function DietList({ setShowMessage }) {
         <p>You have no food in your diet</p>
       ) : (
         diet?.map((item) => (
-          <div key={item.id} className="flex flex-col p-3">
+          <div
+            key={item.id}
+            className="flex flex-col p-3 border-2 border-black"
+          >
             <Image
               src={item.img}
-              alt={item.label}
+              alt={item.title}
               width={200}
               height={200}
               priority
@@ -47,8 +45,8 @@ function DietList({ setShowMessage }) {
               type="button"
               className="bg-red-500 p-3"
               onClick={() => {
-                removeFoodFromDiet(item.id);
-                setShowMessage(true);
+                removeFoodFromDiet(item);
+                calculateCompletedDailyCalorieNeed();
               }}
             >
               Remove
@@ -57,15 +55,8 @@ function DietList({ setShowMessage }) {
               type="button"
               className="bg-yellow-500 p-3"
               onClick={() => {
-                markFoodAsEaten(item.id);
-                handleCalculationCompletedDailyCalorieNeed(
-                  completedDailyCalorieNeed,
-                  item.calories,
-                  setCompletedDailyCalorieNeed,
-                  item.id,
-                  diet
-                );
-                setShowMessage(true);
+                markFoodAsEaten(item);
+                calculateCompletedDailyCalorieNeed();
               }}
             >
               Mark as eaten

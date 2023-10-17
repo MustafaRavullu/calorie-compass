@@ -33,7 +33,7 @@ async function RecipeExplorer({ searchParams }) {
                 label={item.recipe.label}
                 image={item.recipe.image}
                 sourceUrl={item.recipe.url}
-                calories={item.recipe.calories}
+                calories={Math.floor(item.recipe.calories)}
               />
             );
           })

@@ -1,7 +1,7 @@
 import { BiCompass } from "react-icons/bi";
 function Logo() {
   return (
-    <div className="flex items-center text-xl">
+    <div className="flex items-center text-xl hover:cursor-crosshair">
       <BiCompass />
       <p>CalorieCompass</p>
     </div>

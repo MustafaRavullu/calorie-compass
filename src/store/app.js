@@ -21,7 +21,6 @@ const useAppStore = create(
       errorMessage: "",
       setSuccessMessage: (message) => set({ successMessage: message }),
       setErrorMessage: (message) => set({ errorMessage: message }),
-      emptyDiet: () => set({ diet: [] }),
       addFoodToDiet: (food) =>
         set((state) => {
           if (state.diet.length > 200) return { diet: state.diet };
@@ -64,6 +63,15 @@ const useAppStore = create(
             }
           });
           return { completedDailyCalorieNeed: sum };
+        }),
+      resetEverything: () =>
+        set({
+          diet: [],
+          isUserAuthorized: false,
+          dailyCalorieNeed: 0,
+          completedDailyCalorieNeed: 0,
+          successMessage: "",
+          errorMessage: "",
         }),
     }),
     {

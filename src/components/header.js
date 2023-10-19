@@ -1,21 +1,16 @@
-"use client";
-
-import useAppStore from "@/store/app";
-import { useGetFromStore } from "@/hooks";
-
+import HamburgerMenu from "./hamburger-menu";
+import Logo from "./logo";
+import NavLinks from "./nav-links";
+import Protected from "./protected";
 function Header() {
-  // STATES
-  const isUserAuthorized = useGetFromStore(
-    useAppStore,
-    (state) => state.isUserAuthorized
-  );
-
   return (
-    <header>
-      <p>CalorieCompass</p>
-      {isUserAuthorized && (
-        <nav onClick={() => console.log("menu from nav")}>menu</nav>
-      )}
+    <header className="fixed top-0 flex justify-between w-full border-b-2 border-cc_text py-1 px-2 bg-cc_background lg:justify-around">
+      <Logo />
+      {/* If the screen size is larger than 1024, then the navigation links are on otherwise hamburgermenu is on */}
+      <Protected>
+        <HamburgerMenu />
+        <NavLinks />
+      </Protected>
     </header>
   );
 }

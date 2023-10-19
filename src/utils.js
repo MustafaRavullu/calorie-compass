@@ -54,3 +54,8 @@ export function isSumExceedsDailyCalorieNeed(item, array, threshold) {
   }
   return prevSum + item.calories > threshold;
 }
+
+export function handleReset(initialValueFunc) {
+  initialValueFunc();
+  localStorage.clear();
+}

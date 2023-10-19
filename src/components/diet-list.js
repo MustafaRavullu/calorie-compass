@@ -30,7 +30,9 @@ function DietList({ setShowMessage }) {
               height={200}
               priority
             />
-
+            {item.eaten === true && (
+              <p className="text-green-500">Marked As Eaten</p>
+            )}
             <p>title: {item.title}</p>
             <p>calories: {item.calories}</p>
             <a

@@ -14,11 +14,6 @@ async function RecipeExplorer({ searchParams }) {
   const recipes = await getRecipes(url);
   return (
     <div>
-      <div className="flex text-3xl">
-        <Link href="/recipe-explorer">Recipe Explorer</Link>
-        <Link href="/diet">Diet</Link>
-      </div>
-
       <Notification />
       <RecipeSearch />
 

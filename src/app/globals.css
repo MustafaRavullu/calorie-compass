@@ -1,3 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --bar-width: 30px;
+  --bar-height: 5px;
+  --hamburger-gap: 4px;
+  --hamburger-margin: 7px;
+  --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
+  --x-width: calc(var(--hamburger-height) * 1.41421356237);
+  --translate-before-y: calc(var(--bar-height) / -2);
+  --translate-after-y: calc(var(--bar-height) / 2);
+  --aside-pt: calc(var(--hamburger-height) + var(--hamburger-margin) + 1rem);
+}

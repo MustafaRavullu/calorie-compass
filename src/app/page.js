@@ -17,7 +17,7 @@ export default function Home() {
   const router = useRouter();
   useLayoutEffect(() => {
     if (isUserAuthorized) {
-      router.push("/diet");
+      router.push("/cc/diet");
     }
   }, [isUserAuthorized, router]);
   return (

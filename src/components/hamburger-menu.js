@@ -34,16 +34,16 @@ function HamburgerMenu() {
       >
         <nav className="flex flex-col flex-1 gap-4">
           <Link
-            href="/recipe-explorer"
+            href="/cc/recipe-explorer"
             onClick={() => setIsOpen((isOpen) => !isOpen)}
           >
             Recipe Explorer
           </Link>
-          <Link href="/diet" onClick={() => setIsOpen((isOpen) => !isOpen)}>
+          <Link href="/cc/diet" onClick={() => setIsOpen((isOpen) => !isOpen)}>
             Diet
           </Link>
           <Link
-            href="/using-app"
+            href="/cc/using-app"
             onClick={() => setIsOpen((isOpen) => !isOpen)}
           >
             Using CalorieCompass

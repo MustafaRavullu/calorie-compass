@@ -145,7 +145,7 @@ function CalorieNeed() {
           weight
         </p>
         <span>{dailyCalorieNeed}</span>
-        <Link href="/diet">Continue</Link>
+        <Link href="/cc/diet">Continue</Link>
       </dialog>
     </main>
   );

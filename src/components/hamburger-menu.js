@@ -19,7 +19,7 @@ function HamburgerMenu() {
     <>
       {/* HAMBURGER MENU */}
       <label
-        className={`flex flex-col gap-[var(--hamburger-gap)] w-max absolute top-[var(--hamburger-margin)] right-[var(--hamburger-margin)] z-10 cursor-pointer  before:w-[var(--bar-width)] before:h-[var(--bar-height)] before:bg-cc_text before:rounded-full ${
+        className={`flex flex-col gap-[var(--hamburger-gap)] w-max absolute top-[var(--hamburger-margin)] right-[var(--hamburger-margin)] z-50 cursor-pointer  before:w-[var(--bar-width)] before:h-[var(--bar-height)] before:bg-cc_text before:rounded-full ${
           isOpen &&
           "before:-rotate-45 before:w-[var(--x-width)] before:translate-x-0 before:translate-y-[var(--translate-before-y)] "
         } before:origin-right before:transition before:duration-300 before:ease-in-out after:w-[var(--bar-width)] after:h-[var(--bar-height)] after:bg-cc_text after:rounded-full ${
@@ -37,7 +37,7 @@ function HamburgerMenu() {
       </label>
       {/* SIDEBAR */}
       <aside
-        className={`flex flex-col justify-between text-xl fixed top-0 right-0 px-2 py-4 pt-[var(--aside-pt)] bg-cc_background border-l-2 border-cc_text w-[250px] min-h-screen transition duration-300 ${
+        className={`z-40 flex flex-col justify-between text-xl fixed top-0 right-0 px-2 py-4 pt-[var(--aside-pt)] bg-cc_background border-l-2 border-cc_text w-[250px] min-h-screen transition duration-300 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -81,7 +81,7 @@ function HamburgerMenu() {
       {/* SIGN OUT MODAL */}
       <dialog
         ref={resetModal}
-        className="border-2 border-cc_text text-center backdrop:bg-gray-900/20 open:flex open:flex-col block opacity-0 -translate-y-20 transition-[opacity, transform] duration-300 pointer-events-none open:pointer-events-auto [&[open]]:opacity-100 [&[open]]:translate-y-0 inset-0"
+        className="z-50 border-2 border-cc_text text-center backdrop:bg-gray-900/20 open:flex open:flex-col block opacity-0 -translate-y-20 transition-[opacity, transform] duration-300 pointer-events-none open:pointer-events-auto [&[open]]:opacity-100 [&[open]]:translate-y-0 inset-0"
       >
         <p className="w-full border-b-2 border-cc_text  py-2 font-extrabold text-xl">
           Sign out of your account

@@ -40,13 +40,13 @@ function NavLinks() {
         >
           Change theme
         </button>
-        <Link
-          href="/"
+        <button
           onClick={openResetModal}
+          type="button"
           className="hover:underline hover:text-red-500 hover:scale-105"
         >
           Sign Out
-        </Link>
+        </button>
       </nav>
       {/* SIGN OUT MODAL */}
       <dialog

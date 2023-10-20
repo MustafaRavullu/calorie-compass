@@ -9,9 +9,19 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="min-h-screen flex flex-col items-center bg-cc_background text-cc_text font-pixelify">
+      <body
+        className="min-h-screen flex flex-col items-center 
+      bg-cc_background text-cc_text font-pixelify"
+      >
         <Header />
-        <div className="mt-[36px] lg:mt-[44px]">{children}</div>
+        <div
+          id="general-wrapper"
+          className="mt-[var(--top-margin)] w-full h-full flex flex-col 
+          items-center justify-start px-3 sm:w-[var(--sm-content-width)] sm:px-0 
+          lg:mt-[var(--lg-top-margin)]"
+        >
+          {children}
+        </div>
       </body>
     </html>
   );

@@ -5,10 +5,12 @@ import useAppStore from "@/store/app";
 function RecipeCard({ id, label, image, sourceUrl, calories }) {
   const addFoodToDiet = useAppStore((state) => state.addFoodToDiet);
   return (
-    <div className="flex flex-col border-2 border-black p-2">
+    <div className="flex flex-col w-full sm:w-[var(--sm-content-width)] ">
+      <div className="relative">
+        <Image src={image} alt={label} fill={true} priority className="-z-10" />
+      </div>
       <p>title: {label}</p>
       <p>calories: {calories}</p>
-      <Image src={image} alt={label} width={200} height={200} priority />
       <a href={sourceUrl} target="_blank">
         go to source
       </a>

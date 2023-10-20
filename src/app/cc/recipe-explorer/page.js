@@ -11,10 +11,14 @@ async function RecipeExplorer({ searchParams }) {
   const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${searchParams.q}&app_id=${process.env.EDAMAM_APP_ID}&app_key=${process.env.EDAMAM_APP_KEY}&random=true&field=label&field=image&field=url&field=calories&field=totalTime`;
   const recipes = await getRecipes(url);
   return (
-    <div className="w-full flex justify-center flex-col items-center">
+    <div className="w-full h-full flex justify-start flex-col items-center">
       <RecipeSearch />
-      <div className="">
-        {searchParams.q !== undefined ? (
+      <div className="w-full h-full my-4 flex flex-col gap-16">
+        {searchParams.q === undefined || recipes.hits.length === 0 ? (
+          <p className="flex justify-center animate-bounce text-lg">
+            {`Let's search recipes!`}
+          </p>
+        ) : (
           recipes.hits.map((item) => {
             let id = uuidv4();
             return (
@@ -28,8 +32,6 @@ async function RecipeExplorer({ searchParams }) {
               />
             );
           })
-        ) : (
-          <p>Lets search recipes </p>
         )}
       </div>
     </div>

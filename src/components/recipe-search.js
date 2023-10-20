@@ -1,14 +1,19 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { BsSearch } from "react-icons/bs";
 
 function RecipeSearch() {
   const [query, setQuery] = useState("");
+  const inputRef = useRef(null);
+  function handleClearInput() {
+    setQuery("");
+    inputRef.current.focus();
+  }
   return (
     <>
       <form
-        className="flex justify-center gap-5 sticky top-[var(--top-margin)]
+        className=" z-20 flex items-center justify-center gap-3 sticky top-[var(--top-margin)]
        mt-4 w-full bg-cc_background text-cc_text border-2 border-cc_text 
        sm:w-[var(--sm-content-width)] lg:top-[var(--lg-top-margin)]"
       >
@@ -16,15 +21,25 @@ function RecipeSearch() {
           type="text"
           placeholder="Search for recipes"
           className="outline-none p-3 w-full bg-transparent"
+          ref={inputRef}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <div>
+        {query !== "" && (
+          <button
+            className="text-3xl hover:bg-gray-500/20 px-2 py-1 rounded-full 
+            outline-none"
+            onClick={handleClearInput}
+          >
+            &#10005;
+          </button>
+        )}
+        <div className="h-[48px]">
           <Link
             href={`?q=${query}`}
             type="button"
             className="peer p-3 flex justify-center items-center text-xl 
-            border-l-2 border-cc_text bg-[#bfbfbf] h-full"
+            border-l-2 border-cc_text bg-[#bfbfbf] h-full outline-none"
           >
             <BsSearch />
           </Link>

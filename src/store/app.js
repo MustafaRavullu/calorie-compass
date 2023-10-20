@@ -11,6 +11,7 @@ const useAppStore = create(
     (set) => ({
       diet: [],
       isUserAuthorized: false,
+      calorieBarPercentage: 0,
       setIsUserAuthorized: (value) => set({ isUserAuthorized: value }),
       dailyCalorieNeed: 0,
       setDailyCalorieNeed: (value) => set({ dailyCalorieNeed: value }),
@@ -72,6 +73,12 @@ const useAppStore = create(
           completedDailyCalorieNeed: 0,
           successMessage: "",
           errorMessage: "",
+        }),
+      calculateCalorieBarPercentage: () =>
+        set((state) => {
+          let percentage =
+            (state.completedDailyCalorieNeed * 100) / state.dailyCalorieNeed;
+          return { calorieBarPercentage: percentage };
         }),
     }),
     {

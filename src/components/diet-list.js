@@ -4,13 +4,16 @@ import useAppStore from "@/store/app";
 import { useGetFromStore } from "@/hooks";
 import Image from "next/image";
 
-function DietList({ setShowMessage }) {
+function DietList() {
   // STATES
   const diet = useGetFromStore(useAppStore, (state) => state.diet);
   const removeFoodFromDiet = useAppStore((state) => state.removeFoodFromDiet);
   const markFoodAsEaten = useAppStore((state) => state.markFoodAsEaten);
   const calculateCompletedDailyCalorieNeed = useAppStore(
     (state) => state.calculateCompletedDailyCalorieNeed
+  );
+  const calculateCalorieBarPercentage = useAppStore(
+    (state) => state.calculateCalorieBarPercentage
   );
 
   return (
@@ -51,6 +54,7 @@ function DietList({ setShowMessage }) {
               onClick={() => {
                 removeFoodFromDiet(item);
                 calculateCompletedDailyCalorieNeed();
+                calculateCalorieBarPercentage();
               }}
             >
               Remove
@@ -61,6 +65,7 @@ function DietList({ setShowMessage }) {
               onClick={() => {
                 markFoodAsEaten(item);
                 calculateCompletedDailyCalorieNeed();
+                calculateCalorieBarPercentage();
               }}
             >
               Mark as eaten

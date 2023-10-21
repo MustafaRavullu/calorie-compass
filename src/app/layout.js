@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body
         className="min-h-screen flex flex-col items-center 
-      bg-cc_background text-cc_text font-pixelify"
+      bg-gradient-to-b bg-cc_background  from-cc_secondary text-cc_text font-pixelify"
       >
         <Header />
         <div

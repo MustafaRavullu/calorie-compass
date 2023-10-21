@@ -31,22 +31,25 @@ function RecipeCard({ id, label, image, sourceUrl, calories }) {
             Calories: <span className="text-yellow-500">{calories}</span>
           </p>
         </div>
-        <button
-          type="button"
-          className="bg-green-600 hover:bg-green-500 p-3 text-2xl"
-          onClick={() => {
-            addFoodToDiet({
-              id: id,
-              title: label,
-              calories: calories,
-              img: image,
-              source: sourceUrl,
-              eaten: false,
-            });
-          }}
-        >
-          Add to Diet
-        </button>
+        <div className="w-full flex justify-center mb-2">
+          <button
+            type="button"
+            className="bg-green-500 rounded-sm w-[250px] 
+            p-3 text-lg text-cc_text transition-all duration-300 ease-in-out
+          hover:text-cc_dark_text"
+            onClick={() => {
+              addFoodToDiet({
+                id: id,
+                title: label,
+                calories: calories,
+                source: sourceUrl,
+                eaten: false,
+              });
+            }}
+          >
+            Add to Diet
+          </button>
+        </div>
       </div>
     </div>
   );

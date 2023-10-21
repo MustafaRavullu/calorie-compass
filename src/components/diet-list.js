@@ -26,15 +26,6 @@ function DietList() {
             key={item.id}
             className="flex flex-col p-3 border-2 border-black"
           >
-            <div className="h-[200px] w-[200px] relative">
-              <Image
-                src={item.img}
-                alt={item.title}
-                fill
-                sizes="(min-width: 640px) 298px, calc(100vw - 28px)"
-                priority
-              />
-            </div>
             {item.eaten === true && (
               <p className="text-green-500">Marked As Eaten</p>
             )}

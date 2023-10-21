@@ -11,6 +11,9 @@ const useAppStore = create(
     (set) => ({
       diet: [],
       isUserAuthorized: false,
+      lastVisitedDayOfTheMonth: 1,
+      setLastVisitedDayOfTheMonth: (value) =>
+        set({ lastVisitedDayOfTheMonth: value }),
       calorieBarPercentage: 0,
       setIsUserAuthorized: (value) => set({ isUserAuthorized: value }),
       dailyCalorieNeed: 0,
@@ -80,6 +83,15 @@ const useAppStore = create(
             (state.completedDailyCalorieNeed * 100) / state.dailyCalorieNeed;
           return { calorieBarPercentage: percentage };
         }),
+      unmarkFoodAsEaten: () =>
+        set((state) => ({
+          diet: state.diet.map((item) => {
+            if (item.eaten === true) {
+              return { ...item, eaten: false };
+            }
+            return item;
+          }),
+        })),
     }),
     {
       name: "app-store",

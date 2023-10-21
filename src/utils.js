@@ -59,3 +59,20 @@ export function handleReset(initialValueFunc) {
   initialValueFunc();
   localStorage.clear();
 }
+
+export function isNewDay(savedDay) {
+  if (savedDay === undefined) return;
+  const currentDate = new Date();
+  const currentDay = currentDate.getDate();
+  return savedDay !== currentDay;
+}
+
+export function resetCompletedDailyCalorieNeed(
+  resetFunc,
+  unmarkFunc,
+  recalcBarPercentage
+) {
+  resetFunc(0);
+  unmarkFunc();
+  recalcBarPercentage();
+}

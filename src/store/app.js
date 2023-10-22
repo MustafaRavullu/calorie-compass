@@ -72,6 +72,8 @@ const useAppStore = create(
         set({
           diet: [],
           isUserAuthorized: false,
+          lastVisitedDayOfTheMonth: 1,
+          calorieBarPercentage: 0,
           dailyCalorieNeed: 0,
           completedDailyCalorieNeed: 0,
           successMessage: "",

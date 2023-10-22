@@ -9,7 +9,8 @@ function RecipeCard({ id, label, image, sourceUrl, calories }) {
     <div
       className="flex flex-col w-full 
     border-2 border-cc_text bg-cc_dark_background text-cc_dark_text gap-3 
-    sm:w-[var(--sm-content-width)] sm:flex-row sm:gap-0"
+    sm:w-[var(--sm-content-width)] sm:flex-row sm:gap-0 transform transition-all
+     duration-300 ease-in-out hover:scale-105"
     >
       <div
         className="w-full aspect-square relative sm:w-[300px] sm:h-[300px] 

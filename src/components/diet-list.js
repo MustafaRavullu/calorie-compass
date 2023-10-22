@@ -19,16 +19,20 @@ function DietList() {
   );
 
   return (
-    <div className="my-4 flex flex-col gap-10">
+    <div className="my-4 flex flex-col gap-10 ">
       {diet?.length === 0 ? (
-        <p>You have no food in your diet</p>
+        <div className="w-full flex flex-col items-center justify-center text-xl text-gray-500">
+          <p>You have no food in your diet!</p>
+          <p>To add some go to recipe explorer</p>
+        </div>
       ) : (
         diet?.map((item) => (
           <div
             key={item.id}
             className="flex justify-between gap-5 items-center text-center
              flex-col text-cc_dark_text bg-cc_dark_background  border-2
-              border-black"
+              border-black transform transition-all duration-300 ease-in-out
+                 hover:scale-105"
           >
             <p className="text-3xl px-3 pt-2">{item.title}</p>
             <span className="flex items-center text-xl">

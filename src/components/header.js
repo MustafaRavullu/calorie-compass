@@ -1,20 +1,34 @@
+"use client";
+import { useSearchParams } from "next/navigation";
 import HamburgerMenu from "./hamburger-menu";
 import Logo from "./logo";
 import NavLinks from "./nav-links";
 import Protected from "./protected";
+
 function Header() {
+  const searchParams = useSearchParams();
   return (
     <header
-      className="z-30 fixed top-0 flex justify-between w-full border-b-2 
-    border-cc_text py-1 px-2 bg-cc_background xl:justify-around lg:py-2"
+      className={`z-30 h-[90px] fixed top-0 flex justify-center w-full border-b 
+    border-black py-6 px-4 ${
+      searchParams.get("menu") === "diet"
+        ? "bg-[#90a8ed]"
+        : searchParams.get("menu") === "recipe"
+        ? "bg-[#23a094]"
+        : searchParams.get("menu") === "guide"
+        ? "bg-[#ffc900]"
+        : "bg-cc_background"
+    }`}
     >
-      <Logo />
-      {/* If the screen size is larger than 1024, then the navigation links 
-      are on otherwise hamburgermenu is on */}
-      <Protected>
-        <HamburgerMenu />
-        <NavLinks />
-      </Protected>
+      <div className="relative flex justify-between w-[1200px]">
+        <Logo />
+        {/* If the screen size is larger than 1024, then the navigation links
+        are on otherwise hamburgermenu is on */}
+        <Protected>
+          <HamburgerMenu />
+          <NavLinks />
+        </Protected>
+      </div>
     </header>
   );
 }

@@ -39,8 +39,8 @@ function CalorieCalculation() {
     }
   }
   return (
-    <main>
-      <p>Calorie Calculation Page</p>
+    <main className="w-full flex flex-col items-center">
+      <p>{"Let's calculate your daily calorie need"}</p>
 
       {/* Error message if there is a missing value on the form submit */}
       {isEmptyValueDetected && (
@@ -48,10 +48,10 @@ function CalorieCalculation() {
       )}
 
       {/* Calorie need calculation form */}
-      <form className="flex flex-col">
+      <form className="flex flex-col w-full gap-5">
         <input
           type="number"
-          placeholder="weight"
+          placeholder="Weight(kg)"
           value={calorieNeedCalculationInfo.weight}
           onChange={(event) =>
             setCalorieNeedCalculationInfo({
@@ -59,6 +59,7 @@ function CalorieCalculation() {
               weight: Number(event.target.value),
             })
           }
+          className="p-3 bg-cc_dark_background text-white outline-none rounded-sm"
         />
         <input
           type="number"
@@ -70,6 +71,7 @@ function CalorieCalculation() {
               height: Number(event.target.value),
             })
           }
+          className="p-3 bg-cc_dark_background text-white outline-none rounded-sm"
         />
         <input
           type="number"
@@ -81,6 +83,7 @@ function CalorieCalculation() {
               age: Number(event.target.value),
             })
           }
+          className="p-3 bg-cc_dark_background text-white outline-none rounded-sm"
         />
         <select
           id="gender"
@@ -96,6 +99,20 @@ function CalorieCalculation() {
           <option value="male">Male</option>
           <option value="female">Female</option>
         </select>
+        {/* <div className="flex gap-10 justify-between">
+          <button
+            type="button"
+            className="bg-cc_dark_background flex-1 text-white rounded-sm p-3"
+          >
+            Male
+          </button>
+          <button
+            type="button"
+            className="bg-cc_dark_background flex-1 text-white rounded-sm p-3"
+          >
+            Female
+          </button>
+        </div> */}
         <select
           id="activity-level"
           value={calorieNeedCalculationInfo.activityLevel}

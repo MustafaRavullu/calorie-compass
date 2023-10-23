@@ -15,7 +15,7 @@ function Landing() {
   const router = useRouter();
   useLayoutEffect(() => {
     if (isUserAuthorized) {
-      router.push("/cc/diet");
+      router.push("/cc/diet?menu=diet");
     }
   }, [isUserAuthorized, router]);
   return (

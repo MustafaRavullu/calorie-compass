@@ -22,12 +22,12 @@ function HamburgerMenu() {
         className={`flex flex-col gap-[var(--hamburger-gap)] w-max absolute 
         top-[var(--hamburger-margin)] right-[var(--hamburger-margin)] z-50 
         cursor-pointer  before:w-[var(--bar-width)] before:h-[var(--bar-height)]
-         before:bg-cc_text before:rounded-full ${
+         before:bg-black before:rounded-full ${
            isOpen &&
            "before:-rotate-45 before:w-[var(--x-width)] before:translate-x-0 before:translate-y-[var(--translate-before-y)] "
          } before:origin-right before:transition before:duration-300
          before:ease-in-out after:w-[var(--bar-width)] after:h-[var(--bar-height)]
-          after:bg-cc_text after:rounded-full ${
+          after:bg-black after:rounded-full ${
             isOpen &&
             "after:rotate-45 after:w-[var(--x-width)] after:translate-x-0 after:translate-y-[var(--translate-after-y)] "
           } after:origin-right after:transition after:duration-300 after:ease-in-out lg:hidden`}
@@ -35,7 +35,7 @@ function HamburgerMenu() {
         <input
           type="checkbox"
           onClick={() => setIsOpen((isOpen) => !isOpen)}
-          className={`w-[var(--bar-width)] h-[var(--bar-height)] bg-cc_text 
+          className={`w-[var(--bar-width)] h-[var(--bar-height)] bg-black
           rounded-full appearance-none outline-none pointer-events-none transition
            duration-300 ease-in-out ${isOpen && "opacity-0 w-0"}`}
         />

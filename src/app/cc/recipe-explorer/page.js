@@ -14,9 +14,12 @@ async function RecipeExplorer({ searchParams }) {
       <RecipeSearch />
       <div className="w-full h-full my-4 flex flex-col gap-16">
         {searchParams.q === undefined || recipes.hits.length === 0 ? (
-          <p className="flex justify-center animate-bounce text-lg">
-            {`Let's search recipes!`}
-          </p>
+          <>
+            <p className="flex justify-center animate-bounce text-lg">
+              {`Let's search recipes!`}
+            </p>
+            <div className="flex gap-1 w-fit"></div>
+          </>
         ) : (
           recipes.hits.map((item) => {
             return (

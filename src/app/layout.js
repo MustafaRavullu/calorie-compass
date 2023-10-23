@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
       <body
         className="min-h-screen flex flex-col items-center 
       bg-gradient-to-b bg-cc_background  from-cc_secondary text-cc_text
-       font-pixelify"
+       font-playpan"
       >
         <Header />
         <div

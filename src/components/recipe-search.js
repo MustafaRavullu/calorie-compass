@@ -14,13 +14,13 @@ function RecipeSearch() {
     <>
       <form
         className=" z-20 flex items-center justify-center gap-3 sticky top-[var(--top-margin)]
-       mt-4 w-full bg-cc_background text-cc_text border-2 border-cc_text 
-       sm:w-[var(--sm-content-width)] lg:top-[var(--lg-top-margin)]"
+       mt-4 w-full bg-white text-cc_text border border-black rounded-sm 
+       sm:w-[var(--sm-content-width)] lg:top-[var(--lg-top-margin)] focus-within:ring-2 focus-within:ring-cc_accent"
       >
         <input
           type="text"
-          placeholder="Search for recipes"
-          className="outline-none p-3 w-full bg-transparent"
+          placeholder="Search for recipes "
+          className="outline-none p-3 w-full  "
           ref={inputRef}
           value={query}
           onChange={(e) => setQuery(e.target.value)}

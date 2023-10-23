@@ -7,8 +7,8 @@ function RecipeCard({ id, label, image, sourceUrl, calories }) {
   const addFoodToDiet = useAppStore((state) => state.addFoodToDiet);
   return (
     <div
-      className="flex flex-col w-full 
-    border-2 border-cc_text bg-cc_dark_background text-cc_dark_text gap-3 
+      className="flex rounded-sm flex-col w-full 
+    border border-cc_text bg-cc_dark_background text-cc_dark_text gap-3 
     sm:w-[var(--sm-content-width)] sm:flex-row sm:gap-0 transform transition-all
      duration-300 ease-in-out hover:scale-105"
     >

@@ -57,8 +57,8 @@ function CalorieBar() {
 
   return (
     <div
-      className="w-full h-[70px] border-4 border-violet-500 mt-4 sticky 
-    top-[var(--top-margin)] z-10 bg-cc_dark_background lg:top-[var(--lg-top-margin)]
+      className=" w-full h-[70px] border-4 border-violet-500 mt-4 sticky 
+    top-[var(--top-margin)] bg-cc_dark_background lg:top-[var(--lg-top-margin)]
      text-cc_dark_text flex justify-start items-center"
     >
       <div

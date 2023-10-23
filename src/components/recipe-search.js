@@ -13,7 +13,7 @@ function RecipeSearch() {
   return (
     <>
       <form
-        className=" z-20 flex items-center justify-center gap-3 sticky top-[var(--top-margin)]
+        className=" z-[1] flex items-center justify-center gap-3 sticky top-[var(--top-margin)]
        mt-4 w-full bg-white text-cc_text border border-black rounded-sm 
        sm:w-[var(--sm-content-width)] lg:top-[var(--lg-top-margin)] focus-within:ring-2 focus-within:ring-cc_accent"
       >

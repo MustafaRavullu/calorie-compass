@@ -59,7 +59,7 @@ function CalorieCalculation() {
               weight: Number(event.target.value),
             })
           }
-          className="p-3 bg-cc_dark_background text-white outline-none rounded-sm"
+          className="p-3 bg-cc_dark_background  outline-none rounded-sm"
         />
         <input
           type="number"
@@ -71,7 +71,7 @@ function CalorieCalculation() {
               height: Number(event.target.value),
             })
           }
-          className="p-3 bg-cc_dark_background text-white outline-none rounded-sm"
+          className="p-3 bg-cc_dark_background  outline-none rounded-sm"
         />
         <input
           type="number"
@@ -83,7 +83,7 @@ function CalorieCalculation() {
               age: Number(event.target.value),
             })
           }
-          className="p-3 bg-cc_dark_background text-white outline-none rounded-sm"
+          className="p-3 bg-cc_dark_background  outline-none rounded-sm"
         />
         <select
           id="gender"
@@ -157,7 +157,7 @@ function CalorieCalculation() {
           weight
         </p>
         <span>{dailyCalorieNeed}</span>
-        <Link href="/cc/diet">Continue</Link>
+        <Link href="/cc/diet?menu=diet">Continue</Link>
       </dialog>
     </main>
   );

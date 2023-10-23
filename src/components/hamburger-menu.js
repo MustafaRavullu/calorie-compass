@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import Link from "next/link";
 import useAppStore from "@/store/app";
-import { handleReset } from "@/utils";
+import ResetModal from "./reset-modal";
 
 function HamburgerMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,9 +12,7 @@ function HamburgerMenu() {
   function openResetModal() {
     resetModal.current.showModal();
   }
-  function closeResetModal() {
-    resetModal.current.close();
-  }
+
   return (
     <>
       {/* HAMBURGER MENU */}
@@ -51,21 +49,21 @@ function HamburgerMenu() {
         <div className="flex flex-col flex-1">
           <nav className="flex flex-col">
             <Link
-              href="/cc/recipe-explorer?menu=recipe"
+              href="/cc/recipe-explorer"
               className="py-5 px-3 hover:bg-black hover:text-white"
               onClick={() => setIsOpen((isOpen) => !isOpen)}
             >
               Recipe Explorer
             </Link>
             <Link
-              href="/cc/diet?menu=diet"
+              href="/cc/diet"
               className="py-5 px-3 hover:bg-black hover:text-white"
               onClick={() => setIsOpen((isOpen) => !isOpen)}
             >
               Diet
             </Link>
             <Link
-              href="/cc/using-app?menu=guide"
+              href="/cc/using-app"
               className="py-5 px-3 hover:bg-black hover:text-white"
               onClick={() => setIsOpen((isOpen) => !isOpen)}
             >
@@ -82,50 +80,7 @@ function HamburgerMenu() {
         </button>
       </aside>
       {/* RESET MODAL */}
-      <dialog
-        ref={resetModal}
-        className="z-50 border-2 border-cc_text text-center
-         backdrop:bg-gray-900/20 open:flex open:flex-col block
-          opacity-0 -translate-y-20 transition-[opacity, transform]
-           duration-300 pointer-events-none open:pointer-events-auto
-            [&[open]]:opacity-100 [&[open]]:translate-y-0 inset-0"
-      >
-        <p
-          className="w-full border-b-2 border-cc_text  py-2 font-extrabold
-         text-xl"
-        >
-          Reset your account
-        </p>
-        <div className="flex flex-col p-2">
-          <div className="flex flex-col my-2 gap-3">
-            <p className="font-semibold text-lg">
-              <span className="text-red-500">Warning</span>: If you continue,
-              your data will no longer be saved.
-            </p>
-            <p className="mb-2">Please confirm if you would like to proceed.</p>
-          </div>
-          <div className="flex flex-col border-t border-cc_text py-2 gap-2">
-            <button
-              type="button"
-              onClick={closeResetModal}
-              className="border-4 transition-all duration-300 ease-in-out
-               border-cc_dark_secondary bg-cc_secondary p-2 mt-3
-                hover:bg-cc_dark_secondary hover:text-cc_dark_text"
-            >
-              Nevermind, I do not want to reset
-            </button>
-            <Link
-              href="/"
-              onClick={() => handleReset(resetEverything)}
-              className="border-4 border-cc_dark_accent bg-cc_accent
-               p-2 transition-all duration-300 ease-in-out
-                hover:bg-cc_dark_accent hover:text-cc_dark_text"
-            >
-              Yes, reset!
-            </Link>
-          </div>
-        </div>
-      </dialog>
+      <ResetModal resetEverything={resetEverything} ref={resetModal} />
     </>
   );
 }

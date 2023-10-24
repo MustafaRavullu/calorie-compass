@@ -11,7 +11,7 @@ async function RecipeExplorer({ searchParams }) {
     searchParams.q !== null && searchParams.q
   }&app_id=${process.env.EDAMAM_APP_ID}&app_key=${
     process.env.EDAMAM_APP_KEY
-  }&random=true&field=label&field=image&field=url&field=calories&field=totalTime&field=totalCO2Emissions`;
+  }&random=true&field=label&field=image&field=url&field=calories&field=totalTime&field=totalCO2Emissions&field=yield`;
   const recipes = await getRecipes(url);
   return (
     <div className="w-full h-full flex justify-start flex-col items-center">
@@ -33,7 +33,7 @@ async function RecipeExplorer({ searchParams }) {
                 label={item.recipe.label}
                 image={item.recipe.image}
                 sourceUrl={item.recipe.url}
-                calories={Math.floor(item.recipe.calories)}
+                calories={Math.floor(item.recipe.calories / item.recipe.yield)}
               />
             );
           })

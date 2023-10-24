@@ -1,5 +1,5 @@
-import RecipeSearch from "@/components/recipe-search";
 import RecipeCard from "@/components/recipe-card";
+import RecipeSearch from "@/components/recipe-search";
 
 async function getRecipes(url) {
   const response = await fetch(url, { cache: "no-store" });
@@ -7,13 +7,17 @@ async function getRecipes(url) {
 }
 
 async function RecipeExplorer({ searchParams }) {
-  const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${searchParams.q}&app_id=${process.env.EDAMAM_APP_ID}&app_key=${process.env.EDAMAM_APP_KEY}&random=true&field=label&field=image&field=url&field=calories&field=totalTime&field=totalCO2Emissions`;
+  const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${
+    searchParams.q !== null && searchParams.q
+  }&app_id=${process.env.EDAMAM_APP_ID}&app_key=${
+    process.env.EDAMAM_APP_KEY
+  }&random=true&field=label&field=image&field=url&field=calories&field=totalTime&field=totalCO2Emissions`;
   const recipes = await getRecipes(url);
   return (
     <div className="w-full h-full flex justify-start flex-col items-center">
       <RecipeSearch />
       <div className="w-full h-full my-4 flex flex-col gap-16">
-        {searchParams.q === undefined || recipes.hits.length === 0 ? (
+        {searchParams.q === "" || recipes.hits.length === 0 ? (
           <>
             <p className="flex justify-center animate-bounce text-lg">
               {`Let's search recipes!`}

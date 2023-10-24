@@ -157,7 +157,7 @@ function CalorieCalculation() {
           weight
         </p>
         <span>{dailyCalorieNeed}</span>
-        <Link href="/cc/diet?menu=diet">Continue</Link>
+        <Link href="/cc/diet">Continue</Link>
       </dialog>
     </main>
   );

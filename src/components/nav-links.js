@@ -18,6 +18,7 @@ function NavLinks() {
       <nav className=" hidden lg:flex lg:gap-24">
         <div className="flex gap-2">
           <Button
+            type="link"
             active={selectedLink}
             menu="recipe"
             href="/cc/recipe-explorer"
@@ -26,6 +27,7 @@ function NavLinks() {
             onClickFunc={() => setSelectedLink("recipe")}
           />
           <Button
+            type="link"
             menu="diet"
             active={selectedLink}
             href="/cc/diet"
@@ -34,6 +36,7 @@ function NavLinks() {
             onClickFunc={() => setSelectedLink("diet")}
           />
           <Button
+            type="link"
             menu="guide"
             active={selectedLink}
             href="/cc/using-app"
@@ -43,7 +46,7 @@ function NavLinks() {
           />
         </div>
         <Button
-          href=""
+          type="button"
           menu="signout"
           content="Reset"
           color="red"

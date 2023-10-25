@@ -8,7 +8,7 @@ async function getRecipes(url) {
 
 async function RecipeExplorer({ searchParams }) {
   const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${
-    searchParams.q !== null && searchParams.q
+    searchParams.q === undefined ? "" : searchParams.q
   }&app_id=${process.env.EDAMAM_APP_ID}&app_key=${
     process.env.EDAMAM_APP_KEY
   }&random=true&field=label&field=image&field=url&field=calories&field=totalTime&field=totalCO2Emissions&field=yield`;

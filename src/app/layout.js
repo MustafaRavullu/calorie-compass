@@ -17,8 +17,8 @@ export default function RootLayout({ children }) {
         <Header />
         <div
           id="general-wrapper"
-          className="mt-[var(--top-margin)] w-full flex flex-col 
-          items-center justify-start px-3 sm:w-[var(--sm-content-width)] sm:px-0 
+          className="mt-[var(--top-margin)]  flex flex-col 
+          items-center justify-start  w-[95%]  max-w-[1200px]  
           lg:mt-[var(--lg-top-margin)]"
         >
           {children}

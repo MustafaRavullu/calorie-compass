@@ -12,7 +12,7 @@ module.exports = {
         cc_accent: "#ff90e8",
       },
       fontFamily: {
-        playpan: ["Playpen Sans", "cursive"],
+        montserrat: ["Montserrat", "sans-serif"],
       },
     },
   },

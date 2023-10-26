@@ -12,7 +12,7 @@ function RecipeSearch() {
       onSubmit={(e) => e.preventDefault()}
       className="pr-2 z-[1] flex items-center justify-center  sticky top-[var(--top-margin)]
  mt-4 w-full bg-white text-cc_text border pl-3 border-black rounded-sm 
-  lg:top-[var(--lg-top-margin)] focus-within:ring-2 focus-within:ring-cc_accent"
+  lg:top-[var(--lg-top-margin)] focus-within:ring-2 focus-within:ring-cc_accent h-[70px] text-xl"
     >
       <BsSearch />
       <input

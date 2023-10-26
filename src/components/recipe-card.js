@@ -13,7 +13,7 @@ function RecipeCard({ id, label, image, sourceUrl, calories }) {
       w-full justify-between
       "
     >
-      <div className="absolute inset-0 bg-black group-hover:translate-x-[6px] group-hover:translate-y-[6px]  transition-all duration-200 ease-out z-[-1] rounded-[3px]"></div>
+      <div className="absolute inset-0 bg-black group-hover:translate-x-[6px] group-hover:translate-y-[6px]   transition-all duration-200 ease-out z-[-1] rounded-md"></div>
       <div className=" relative border-b border-black w-full aspect-square object-cover ">
         <Image
           src={image}

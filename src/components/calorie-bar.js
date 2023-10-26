@@ -57,12 +57,12 @@ function CalorieBar() {
 
   return (
     <div
-      className=" w-full h-[70px] border-4 border-violet-500 mt-4 sticky 
+      className="z-[2] w-full h-[70px] border rounded-md border-black mt-4 sticky bg-cc_background
     top-[var(--top-margin)] bg-cc_dark_background lg:top-[var(--lg-top-margin)]
      text-cc_dark_text flex justify-start items-center"
     >
       <div
-        className={` h-full bg-green-500 transition-all ease-out
+        className={` h-full rounded-md bg-[#0DFF8A] transition-all ease-out
       duration-1000`}
         style={percentageStyle}
       ></div>

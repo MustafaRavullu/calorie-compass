@@ -18,3 +18,9 @@
   --lg-top-margin: 90px;
   --sm-content-width: 616px;
 }
+
+@layer base {
+  .remove_arrows {
+    @apply [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none;
+  }
+}

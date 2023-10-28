@@ -12,13 +12,13 @@ export function calculateDailyCalorieNeed(obj) {
   switch (activityLevel) {
     case "sedentary":
       return basalMetabolicRate * 1.2 + calorieGoal;
-    case "lightly-active":
+    case "lightly active":
       return basalMetabolicRate * 1.375 + calorieGoal;
-    case "moderately-active":
+    case "moderately active":
       return basalMetabolicRate * 1.55 + calorieGoal;
-    case "very-active":
+    case "very active":
       return basalMetabolicRate * 1.725 + calorieGoal;
-    case "extra-active":
+    case "extra active":
       return basalMetabolicRate * 1.9 + calorieGoal;
   }
 }

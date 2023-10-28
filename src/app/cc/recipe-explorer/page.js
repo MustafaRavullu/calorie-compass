@@ -2,7 +2,8 @@ import RecipeCard from "@/components/recipe-card";
 import RecipeSearch from "@/components/recipe-search";
 
 async function getRecipes(url) {
-  const response = await fetch(url, { cache: "no-store" });
+  // , { cache: "no-store" }
+  const response = await fetch(url);
   return response.json();
 }
 
@@ -14,7 +15,7 @@ async function RecipeExplorer({ searchParams }) {
   }&random=true&field=label&field=image&field=url&field=calories&field=totalTime&field=totalCO2Emissions&field=yield`;
   const recipes = await getRecipes(url);
   return (
-    <div className="w-full h-full flex justify-start flex-col items-center">
+    <div className="w-full px-4  h-full flex justify-start flex-col items-center">
       <RecipeSearch />
       <div className="w-full h-full my-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5  gap-4">
         {searchParams.q === "" || recipes.hits.length === 0 ? (

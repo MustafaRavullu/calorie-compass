@@ -40,7 +40,7 @@ function Button({ type, menu, href, content, color, onClickFunc, active }) {
           }  
              group-hover:-translate-x-1 group-hover:-translate-y-1 transition-all
             duration-100 ease-out rounded-full border 
-               group-hover:border-black group-active:translate-x-0 group-active:translate-y-0`}
+               group-hover:border-black group-active:translate-x-0 group-active:translate-y-0 `}
         >
           {content}
         </button>

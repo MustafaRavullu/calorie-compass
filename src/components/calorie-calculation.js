@@ -6,6 +6,8 @@ import { calculateDailyCalorieNeed, hasEmptyValue } from "@/utils";
 import useAppStore from "@/store/app";
 import { useGetFromStore } from "@/hooks";
 import { IoIosArrowBack } from "react-icons/io";
+import { PiConfettiFill } from "react-icons/pi";
+import Button from "./button";
 
 function CalorieCalculation() {
   const calorieNeedModal = useRef(null);
@@ -33,7 +35,6 @@ function CalorieCalculation() {
     if (info.goal !== "") {
       setError(false);
       calorieNeedModal?.current?.showModal();
-      setIsUserAuthorized(true);
       setDailyCalorieNeed(
         Math.floor(calculateDailyCalorieNeed(calorieNeedCalculationInfo))
       );
@@ -428,13 +429,36 @@ function CalorieCalculation() {
       </form>
 
       {/* Modal to show the calculated calorie need */}
-      <dialog ref={calorieNeedModal}>
-        <p>
-          This is your daily calorie goal to {calorieNeedCalculationInfo.goal}{" "}
-          weight
-        </p>
-        <span>{dailyCalorieNeed}</span>
-        <Link href="/cc/diet">Continue</Link>
+      <dialog
+        ref={calorieNeedModal}
+        className="p-6 z-50 border border-black text-center
+        backdrop:bg-gray-900/20 open:flex open:flex-col open:justify-between block
+         opacity-0 -translate-y-20 transition-[opacity, transform]
+          duration-300 pointer-events-none open:pointer-events-auto
+           [&[open]]:opacity-100 [&[open]]:translate-y-0 inset-0 rounded-[5px] "
+      >
+        <div className="flex flex-col items-center gap-8">
+          <p className="text-2xl text-center">
+            Your daily calorie goal to{" "}
+            <span className="text-yellow-500">
+              {calorieNeedCalculationInfo.goal}
+            </span>{" "}
+            weight
+          </p>
+          <div className="flex justify-center items-center gap-3">
+            <PiConfettiFill className="-rotate-90 text-6xl text-orange-600" />
+            <span className="text-yellow-600 text-4xl">{dailyCalorieNeed}</span>
+            <PiConfettiFill className="text-6xl text-orange-600" />
+          </div>
+          <Button
+            menu=""
+            type="link"
+            href="/cc/diet"
+            content="Continue"
+            color="default"
+            onClickFunc={() => setIsUserAuthorized(true)}
+          />
+        </div>
       </dialog>
     </main>
   );

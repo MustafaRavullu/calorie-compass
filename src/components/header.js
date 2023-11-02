@@ -15,6 +15,8 @@ function Header() {
         return "bg-[#23a094]";
       case "/cc/using-app":
         return "bg-[#ffc900]";
+      case "/cc/stats":
+        return "bg-[#dc341e]";
       default:
         return "bg-cc_background"; // Default background color
     }

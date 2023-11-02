@@ -23,7 +23,7 @@ function DietList() {
       {diet?.length === 0 ? (
         <div className="w-full flex flex-col items-center justify-center text-xl text-gray-500">
           <p>You have no food in your diet!</p>
-          <p>To add some go to recipe explorer</p>
+          <p className="text-center">To add some go to recipe explorer</p>
         </div>
       ) : (
         diet?.map((item) => (

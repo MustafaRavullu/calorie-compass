@@ -37,10 +37,19 @@ function NavLinks() {
           />
           <Button
             type="link"
+            menu="stats"
+            active={selectedLink}
+            href="/cc/stats"
+            content="Stats"
+            color="default"
+            onClickFunc={() => setSelectedLink("stats")}
+          />
+          <Button
+            type="link"
             menu="guide"
             active={selectedLink}
             href="/cc/using-app"
-            content="Guide"
+            content="How it works?"
             color="default"
             onClickFunc={() => setSelectedLink("guide")}
           />

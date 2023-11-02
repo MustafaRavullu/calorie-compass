@@ -1,7 +1,7 @@
 import RecipeCard from "@/components/recipe-card";
 import RecipeSearch from "@/components/recipe-search";
 import { BiSearchAlt } from "react-icons/bi";
-import { FaWpexplorer } from "react-icons/fa";
+import { SiInternetexplorer } from "react-icons/si";
 import { BsCheck } from "react-icons/bs";
 
 async function getRecipes(url) {
@@ -30,23 +30,29 @@ async function RecipeExplorer({ searchParams }) {
         {searchParams.q === "" || recipes.hits.length === 0 ? (
           <>
             <div className="flex justify-around w-[300px] sm:w-fit items-center text-sm mt-8 flex-col lg:flex-row gap-5 lg:mt-56">
-              <div className="flex flex-col items-center rounded-sm border border-black gap-3 w-[300px] h-[180px]">
-                <p className="text-[#7a7a78] pt-2">Step 1</p>
-                <BiSearchAlt className="w-14 h-14 rounded-sm" />
+              <div className="flex flex-col items-center  rounded-md border border-black gap-3 w-[300px] h-[150px]">
+                <p className="text-[#191919] pt-2 flex-1 flex justify-center items-center text-2xl">
+                  Step 1
+                </p>
+                {/* <BiSearchAlt className="w-14 h-14 " /> */}
                 <p className="text-center w-full border-t border-black p-3 ">
                   Search for recipes by name, ingredient, or cuisine...
                 </p>
               </div>
-              <div className="flex flex-col items-center rounded-sm border border-black gap-3 w-[300px] h-[180px]">
-                <p className="text-[#7a7a78] pt-2">Step 2</p>
-                <FaWpexplorer className=" w-14 h-14 rounded-sm" />
+              <div className="flex flex-col items-center  rounded-md border border-black gap-3 w-[300px] h-[150px]">
+                <p className="text-[#191919] pt-2 flex-1 flex justify-center items-center text-2xl">
+                  Step 2
+                </p>
+                {/* <SiInternetexplorer className=" w-12 h-12 " /> */}
                 <p className="text-center w-full border-t border-black p-3">
                   {`Here you'll find up to 20 delicious recipes that match your search.`}
                 </p>
               </div>
-              <div className="flex flex-col items-center rounded-sm border border-black gap-3 w-[300px] h-[180px]">
-                <p className="text-[#7a7a78] pt-2">Step 3</p>
-                <BsCheck className="w-14 h-14 rounded-sm" />
+              <div className="flex flex-col items-center  rounded-md border border-black gap-3 w-[300px] h-[150px]">
+                <p className="text-[#191919] pt-2 flex-1 flex justify-center items-center text-2xl">
+                  Step 3
+                </p>
+                {/* <BsCheck className="w-14 h-14 " /> */}
                 <p className="text-center w-full border-t border-black p-3">
                   Your Cookbook: Save your favorite recipes here for quick
                   access.

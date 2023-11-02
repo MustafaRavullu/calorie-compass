@@ -21,8 +21,8 @@ function NavLinks() {
             type="link"
             active={selectedLink}
             menu="recipe"
-            href="/cc/recipe-explorer"
-            content="Recipe Explorer"
+            href="/cc/explorer"
+            content="Explorer"
             color="default"
             onClickFunc={() => setSelectedLink("recipe")}
           />
@@ -30,8 +30,8 @@ function NavLinks() {
             type="link"
             menu="diet"
             active={selectedLink}
-            href="/cc/diet"
-            content="Diet"
+            href="/cc/cookbook"
+            content="Cookbook"
             color="default"
             onClickFunc={() => setSelectedLink("diet")}
           />
@@ -48,7 +48,7 @@ function NavLinks() {
             type="link"
             menu="guide"
             active={selectedLink}
-            href="/cc/using-app"
+            href="/cc/how-it-works"
             content="How it works?"
             color="default"
             onClickFunc={() => setSelectedLink("guide")}

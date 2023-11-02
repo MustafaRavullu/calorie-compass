@@ -9,11 +9,11 @@ function Header() {
   const pathname = usePathname();
   function getHeaderBackgroundColor() {
     switch (pathname) {
-      case "/cc/recipe-explorer":
+      case "/cc/explorer":
         return "bg-[#90a8ed]";
-      case "/cc/diet":
+      case "/cc/cookbook":
         return "bg-[#23a094]";
-      case "/cc/using-app":
+      case "/cc/how-it-works":
         return "bg-[#ffc900]";
       case "/cc/stats":
         return "bg-[#dc341e]";

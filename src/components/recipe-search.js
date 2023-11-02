@@ -1,5 +1,5 @@
 "use client";
-import { BsSearch } from "react-icons/bs";
+import { BiSearchAlt } from "react-icons/bi";
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { BsArrowCounterclockwise } from "react-icons/bs";
@@ -14,7 +14,7 @@ function RecipeSearch() {
  mt-4 w-full bg-white text-cc_text border pl-3 border-black rounded-sm 
   lg:top-[var(--lg-top-margin)] focus-within:ring-2 focus-within:ring-cc_accent h-[70px] text-xl"
     >
-      <BsSearch />
+      <BiSearchAlt className="text-2xl" />
       <input
         type="text"
         placeholder="Search for recipes "

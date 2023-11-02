@@ -49,25 +49,32 @@ function HamburgerMenu() {
         <div className="flex flex-col flex-1">
           <nav className="flex flex-col">
             <Link
-              href="/cc/recipe-explorer"
+              href="/cc/explorer"
               className="py-5 px-3 hover:bg-black hover:text-white"
               onClick={() => setIsOpen((isOpen) => !isOpen)}
             >
-              Recipe Explorer
+              Explorer
             </Link>
             <Link
-              href="/cc/diet"
+              href="/cc/cookbook"
               className="py-5 px-3 hover:bg-black hover:text-white"
               onClick={() => setIsOpen((isOpen) => !isOpen)}
             >
-              Diet
+              Cookbook
             </Link>
             <Link
-              href="/cc/using-app"
+              href="/cc/stats"
               className="py-5 px-3 hover:bg-black hover:text-white"
               onClick={() => setIsOpen((isOpen) => !isOpen)}
             >
-              Using CalorieCompass
+              Stats
+            </Link>
+            <Link
+              href="/cc/how-it-works"
+              className="py-5 px-3 hover:bg-black hover:text-white"
+              onClick={() => setIsOpen((isOpen) => !isOpen)}
+            >
+              How it works?
             </Link>
           </nav>
         </div>

@@ -84,7 +84,7 @@ function HamburgerMenu() {
                 onClick={() => setIsOpen((isOpen) => !isOpen)}
               >
                 <FaQuestion className="text-2xl" />
-                How it works?
+                How it works
               </Link>
             </nav>
           </div>

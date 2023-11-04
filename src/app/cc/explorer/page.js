@@ -29,7 +29,7 @@ async function RecipeExplorer({ searchParams }) {
       >
         {searchParams.q === "" || recipes.hits.length === 0 ? (
           <>
-            <div className="flex justify-around w-[300px] sm:w-fit items-center text-sm mt-8 flex-col lg:flex-row gap-5 lg:mt-56">
+            <div className="flex justify-around w-[300px] sm:w-fit items-center text-sm mt-56 flex-col lg:flex-row gap-5  h-[180px]">
               <div className="flex flex-col items-center  rounded-md border border-black gap-3 w-[300px] h-[150px]">
                 <p className="text-[#191919] pt-2 flex-1 flex justify-center items-center text-2xl">
                   Step 1
@@ -45,7 +45,7 @@ async function RecipeExplorer({ searchParams }) {
                 </p>
                 {/* <SiInternetexplorer className=" w-12 h-12 " /> */}
                 <p className="text-center w-full border-t border-black p-3">
-                  {`Here you'll find up to 20 delicious recipes that match your search.`}
+                  {`Here you'll find delicious recipes that match your search`}
                 </p>
               </div>
               <div className="flex flex-col items-center  rounded-md border border-black gap-3 w-[300px] h-[150px]">
@@ -54,8 +54,8 @@ async function RecipeExplorer({ searchParams }) {
                 </p>
                 {/* <BsCheck className="w-14 h-14 " /> */}
                 <p className="text-center w-full border-t border-black p-3">
-                  Your Cookbook: Save your favorite recipes here for quick
-                  access.
+                  Add your favorite recipes to your cookbook and explore new
+                  flavors
                 </p>
               </div>
             </div>

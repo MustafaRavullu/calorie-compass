@@ -22,8 +22,8 @@ function DietList() {
     <div className="my-4   grid grid-cols-1   gap-4">
       {diet?.length === 0 ? (
         <div className="w-full flex flex-col items-center justify-center text-xl text-gray-500">
-          <p>You have no food in your diet!</p>
-          <p className="text-center">To add some go to recipe explorer</p>
+          <p>You have no recipe in the cookbook!</p>
+          <p className="text-center">To add some go to explorer</p>
         </div>
       ) : (
         diet?.map((item) => (

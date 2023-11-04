@@ -14,6 +14,9 @@ module.exports = {
       fontFamily: {
         montserrat: ["Montserrat", "sans-serif"],
       },
+      filter: {
+        grayscale: "grayscale(100%)",
+      },
     },
   },
   plugins: [],

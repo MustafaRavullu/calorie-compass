@@ -10,6 +10,7 @@ module.exports = {
       colors: {
         cc_background: "#f4f4f0",
         cc_accent: "#ff90e8",
+        cc_green: "#0DFF8A",
       },
       fontFamily: {
         montserrat: ["Montserrat", "sans-serif"],

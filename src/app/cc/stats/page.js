@@ -1,7 +1,11 @@
-import React from "react";
+import CircleCalorieBar from "@/components/circle-calorie-bar";
 
 function Stats() {
-  return <div></div>;
+  return (
+    <main className="w-full flex-1 flex justify-center">
+      <CircleCalorieBar />
+    </main>
+  );
 }
 
 export default Stats;
